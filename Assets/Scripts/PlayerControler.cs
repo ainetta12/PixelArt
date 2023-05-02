@@ -12,8 +12,11 @@ public class PlayerControler : MonoBehaviour
     private Rigidbody2D rBody;
     private GroundSensor sensor;
     public Animator anim;
+    private Prop prop;
 
     float horizontal;
+    GameManager gameManager;
+
 
     // Start is called before the first frame update
     void Start()
@@ -61,6 +64,7 @@ public class PlayerControler : MonoBehaviour
     {
         rBody.velocity = new Vector2 (horizontal * playerSpeed, rBody.velocity.y);
     }
+
 
 }
     
