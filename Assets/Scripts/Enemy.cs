@@ -15,7 +15,7 @@ public class Enemy : MonoBehaviour
     SFXManager sfxManager;
     SoundManager soundManager;
 
-    GameManager gameManager;
+    //GameManager gameManager;
 
     // Start is called before the first frame update
     void Start()
@@ -26,7 +26,7 @@ public class Enemy : MonoBehaviour
 
         sfxManager = GameObject.Find("SFXManager").GetComponent<SFXManager>();
         soundManager = GameObject.Find("SoundManager").GetComponent<SoundManager>();
-        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        //gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
     // Update is called once per frame
@@ -46,15 +46,15 @@ public class Enemy : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            Debug.Log("Player muerto");
+            Debug.Log("Enemy muerto");
             Destroy(collision.gameObject);
             soundManager.StopBGM();
             sfxManager.EnemyDeath();
-            SceneManager.LoadScene(2);
-            gameManager.GameOver();
+            //SceneManager.LoadScene(2);
+           // gameManager.GameOver();
         }
 
-        if (collision.gameObject.tag == "ColllisionGoomba")
+        if (collision.gameObject.tag == "CollisionEnemy")
         {
             if (horizontal == 1)
             {
@@ -69,7 +69,7 @@ public class Enemy : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collider)
     {
-        if (collider.gameObject.tag == "ColllisionGoomba")
+        if (collider.gameObject.tag == "CollisionEnemy")
         {
             if (horizontal == 1)
             {

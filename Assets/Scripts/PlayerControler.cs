@@ -15,7 +15,7 @@ public class PlayerControler : MonoBehaviour
     private Prop prop;
 
     float horizontal;
-    GameManager gameManager;
+    //GameManager gameManager;
 
 
     // Start is called before the first frame update
@@ -64,6 +64,33 @@ public class PlayerControler : MonoBehaviour
     {
         rBody.velocity = new Vector2 (horizontal * playerSpeed, rBody.velocity.y);
     }
+     void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Enemy")
+        {
+            Debug.Log("Player muerto");
+            Destroy(collision.gameObject);
+            Prop prop = collision.gameObject.GetComponent<Prop>();
+            prop.Die();
+            /*contadorCoin++;
+            contadorTexto.text = "coin " + contadorCoin.ToString();
+            Debug.Log(contadorCoin);*/
+
+        }
+
+         if (collision.gameObject.tag == "PowerUp")
+        {
+           //gameManager.canShoot = true;
+           Destroy(collision.gameObject);
+        }
+
+        /*if (collision.gameObject.tag == "CollisionFlag")
+        {
+            Debug.Log("PlayerMuerto");
+            Flag flag = collision.gameObject.GetComponent<Flag>();
+        }*/
+    }
+
 
 
 }
