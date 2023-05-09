@@ -72,9 +72,9 @@ public class PlayerControler : MonoBehaviour
             Destroy(collision.gameObject);
             Prop prop = collision.gameObject.GetComponent<Prop>();
             prop.Die();
-            /*contadorCoin++;
-            contadorTexto.text = "coin " + contadorCoin.ToString();
-            Debug.Log(contadorCoin);*/
+            /*contadorProp++;
+            contadorTexto.text = "prop " + contadorProp.ToString();
+            Debug.Log(contadorProp);*/
 
         }
 
@@ -84,11 +84,7 @@ public class PlayerControler : MonoBehaviour
            Destroy(collision.gameObject);
         }
 
-        /*if (collision.gameObject.tag == "CollisionFlag")
-        {
-            Debug.Log("PlayerMuerto");
-            Flag flag = collision.gameObject.GetComponent<Flag>();
-        }*/
+    
     }
 
 

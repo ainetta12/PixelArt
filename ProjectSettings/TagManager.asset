@@ -6,6 +6,7 @@ TagManager:
   tags:
   - CollisionEnemy
   - Enemy
+  - CollisionProp
   layers:
   - Default
   - TransparentFX
