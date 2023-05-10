@@ -17,6 +17,8 @@ public class PlayerControler : MonoBehaviour
     float horizontal;
     //GameManager gameManager;
 
+    public Transform puñoPosition;
+    public float attackRadius = 1f;
 
     // Start is called before the first frame update
     void Start()
@@ -59,35 +61,64 @@ public class PlayerControler : MonoBehaviour
             anim.SetBool("IsJumping", true);
         }
 
+         if(Input.GetButtonDown("Fire1") && sensor.isGrounded)
+        {
+            //leftcontrol para pegar
+            anim.SetBool("IsHitting", true);
+            Attack();
+        }
+
     }
+
     void FixedUpdate() 
     {
         rBody.velocity = new Vector2 (horizontal * playerSpeed, rBody.velocity.y);
     }
-     void OnCollisionEnter2D(Collision2D collision)
+
+    void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Enemy")
+        /*if (collision.gameObject.tag == "Enemy")
         {
             Debug.Log("Player muerto");
             Destroy(collision.gameObject);
-            Prop prop = collision.gameObject.GetComponent<Prop>();
-            prop.Die();
-            /*contadorProp++;
+            contadorProp++;
             contadorTexto.text = "prop " + contadorProp.ToString();
-            Debug.Log(contadorProp);*/
+            Debug.Log(contadorProp);
 
-        }
+        }*/
 
-         if (collision.gameObject.tag == "PowerUp")
+         /*if (collision.gameObject.tag == "PowerUp")
         {
            //gameManager.canShoot = true;
            Destroy(collision.gameObject);
-        }
+        }*/
 
-    
+        
+        if (collision.gameObject.tag == "CollisionProp")
+        {
+           Prop prop = collision.gameObject.GetComponent<Prop>();
+            prop.Die();
+        }    
     }
 
+    void Attack()
+    {
+        Collider2D[] enemiesInRange = Physics2D.OverlapCircleAll(puñoPosition.position, attackRadius);
 
+        for(int i = 0; i < enemiesInRange.Length; i++)
+        {
+           if (enemiesInRange[i].gameObject.tag == "Enemy")
+           {
+                Destroy(enemiesInRange[i].gameObject);
+           }
+        }
+    }
+
+    private void OnDrawGizmos() 
+    {
+        Gizmos.color = Color.white;
+        Gizmos.DrawWireSphere(puñoPosition.position, attackRadius);
+    }
 
 }
     
