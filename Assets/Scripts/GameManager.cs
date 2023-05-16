@@ -1,15 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
     public bool isGameOver;
     // Start is called before the first frame update
-    //public Text propText;
 
-    //int prop;
+    public Text propText;
 
+    int prop;
 
     public void GameOver()
     {
@@ -30,10 +32,19 @@ public class GameManager : MonoBehaviour
       SceneManager.LoadScene(2);
   }*/
 
+    IEnumerator LoadScene()
+    {
+        //Esto para la cortina durante 2.5 segundos
+        yield return new WaitForSeconds(2.5f);
 
-    /*public void AddProp()
+        SceneManager.LoadScene(2);
+    }
+
+
+    public void AddProp()
     {
         prop++;
-        propText.text = coins.ToString();
-    }*/
+        propText.text = prop.ToString();
+    }
+
 }

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoBehaviour
 {
@@ -13,10 +14,10 @@ public class MenuManager : MonoBehaviour
         sfxSource = GameObject.Find("SFXManager").GetComponent<AudioSource>();
     }
 
-   /* public void Play()
+    public void Play()
     {
         SceneManager.LoadScene(1);
-    }*/
+    }
 
     public void ExitGame()
     {
@@ -33,8 +34,9 @@ public class MenuManager : MonoBehaviour
         sfxSource.volume = value;
     }
 
-    /*public void Menu()
+    public void Menu()
     {
         SceneManager.LoadScene(0);
-    }*/
+    }
+
 }
