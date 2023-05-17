@@ -17,7 +17,7 @@ public class PlayerControler : MonoBehaviour
     float horizontal;
     //GameManager gameManager;
 
-    public Transform puñoPosition;
+    public Transform punoPosition;
     public float attackRadius = 1f;
 
     // Start is called before the first frame update
@@ -64,7 +64,7 @@ public class PlayerControler : MonoBehaviour
          if(Input.GetButtonDown("Fire1") && sensor.isGrounded)
         {
             //leftcontrol para pegar
-            anim.SetBool("IsHitting", true);
+            anim.SetTrigger("IsHitting");
             Attack();
         }
 
@@ -103,7 +103,7 @@ public class PlayerControler : MonoBehaviour
 
     void Attack()
     {
-        Collider2D[] enemiesInRange = Physics2D.OverlapCircleAll(puñoPosition.position, attackRadius);
+        Collider2D[] enemiesInRange = Physics2D.OverlapCircleAll(punoPosition.position, attackRadius);
 
         for(int i = 0; i < enemiesInRange.Length; i++)
         {
@@ -117,7 +117,7 @@ public class PlayerControler : MonoBehaviour
     private void OnDrawGizmos() 
     {
         Gizmos.color = Color.white;
-        Gizmos.DrawWireSphere(puñoPosition.position, attackRadius);
+        Gizmos.DrawWireSphere(punoPosition.position, attackRadius);
     }
 
 }

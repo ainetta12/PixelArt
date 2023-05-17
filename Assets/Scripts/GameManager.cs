@@ -44,7 +44,7 @@ public class GameManager : MonoBehaviour
     public void AddProp()
     {
         prop++;
-        propText.text = prop.ToString();
+        propText.text = "CAT " + prop.ToString();
     }
 
 }
